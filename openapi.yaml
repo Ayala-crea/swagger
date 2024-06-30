@@ -67,13 +67,6 @@ paths:
                 category: 1
       security:
         - bearerAuth: []
-      parameters:
-        - name: LOGIN
-          in: header
-          schema:
-            type: string
-          example: >-
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpZF9yb2xlIjoyLCJleHAiOjE3MTkxMzA3MDksImlzcyI6Im15YXBwIn0.Kjh2aiPkIvY5qznuintIYKajRopd6WH7sgM66xRGbLo
       responses:
         '200':
           description: Successful response
@@ -83,35 +76,43 @@ paths:
     get:
       tags:
         - default
-      summary: Get item
+      summary: Get items
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /items/1:
+  /items/{id_items}:
     get:
       tags:
         - default
-      summary: get item by id
+      summary: Get item by id
       parameters:
         - name: id_items
-          in: header
+          in: path
+          required: true
           schema:
             type: integer
-          example: '1'
+          example: 1
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /delete/item/1:
+  /delete/item/{id_items}:
     delete:
       tags:
         - default
-      summary: delete item
+      summary: Delete item
       security:
         - bearerAuth: []
+      parameters:
+        - name: id_items
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
       responses:
         '200':
           description: Successful response
