@@ -95,7 +95,7 @@ paths:
         - default
       summary: get item by id
       parameters:
-        - name: id_item
+        - name: id_items
           in: header
           schema:
             type: integer
